@@ -1,0 +1,78 @@
+/home/gabriel/UNIVERSIDAD/TC/PRACTICA1/practica1/componentes.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/gabriel/UNIVERSIDAD/TC/PRACTICA1/practica1/componentes.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux8a1
+-- Compiling architecture funcional of mux8a1
+-- Compiling entity deco3a8
+-- Compiling architecture funcional of deco3a8
+
+} {} {}} /home/gabriel/UNIVERSIDAD/TC/PRACTICA1/practica1/puertas_basicas.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/gabriel/UNIVERSIDAD/TC/PRACTICA1/practica1/puertas_basicas.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity not1
+-- Compiling architecture arq1 of not1
+-- Compiling entity and2
+-- Compiling architecture arq_1 of and2
+-- Compiling entity and3
+-- Compiling architecture arq_1 of and3
+-- Compiling entity and4
+-- Compiling architecture arq_1 of and4
+-- Compiling entity and5
+-- Compiling architecture arq_1 of and5
+-- Compiling entity and6
+-- Compiling architecture arq_1 of and6
+-- Compiling entity and7
+-- Compiling architecture arq_1 of and7
+-- Compiling entity or2
+-- Compiling architecture arq_1 of or2
+-- Compiling entity or3
+-- Compiling architecture arq_1 of or3
+-- Compiling entity or4
+-- Compiling architecture arq_1 of or4
+-- Compiling entity or5
+-- Compiling architecture arq_1 of or5
+-- Compiling entity or6
+-- Compiling architecture arq_1 of or6
+-- Compiling entity or7
+-- Compiling architecture arq_1 of or7
+-- Compiling entity or8
+-- Compiling architecture arq_1 of or8
+-- Compiling entity nand2
+-- Compiling architecture arq_1 of nand2
+-- Compiling entity nand3
+-- Compiling architecture arq_1 of nand3
+-- Compiling entity nand4
+-- Compiling architecture arq_1 of nand4
+-- Compiling entity nand5
+-- Compiling architecture arq_1 of nand5
+-- Compiling entity nand6
+-- Compiling architecture arq_1 of nand6
+-- Compiling entity nand7
+-- Compiling architecture arq_1 of nand7
+-- Compiling entity nor2
+-- Compiling architecture arq_1 of nor2
+-- Compiling entity nor3
+-- Compiling architecture arq_1 of nor3
+-- Compiling entity nor4
+-- Compiling architecture arq_1 of nor4
+-- Compiling entity nor5
+-- Compiling architecture arq_1 of nor5
+-- Compiling entity nor6
+-- Compiling architecture arq_1 of nor6
+-- Compiling entity nor7
+-- Compiling architecture arq_1 of nor7
+
+} {} {}} /home/gabriel/UNIVERSIDAD/TC/PRACTICA1/practica1/test_bench_practica1.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/gabriel/UNIVERSIDAD/TC/PRACTICA1/practica1/test_bench_practica1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity test_multiple
+-- Compiling architecture test of test_multiple
+-- Loading entity practica_1
+
+} {} {}}

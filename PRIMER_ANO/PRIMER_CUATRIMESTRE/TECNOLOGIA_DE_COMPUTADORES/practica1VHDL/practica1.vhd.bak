@@ -1,0 +1,149 @@
+----------------------------------------------------
+----- GABRIEL MORALES DATO y UNAI RETES CORADA -----
+----- ING. INFORMATICA E ING. DE COMPUTADORES  -----
+----- TECNOLOGIA DE COMPUTADORES - PRACTICA 1  -----
+----------------------------------------------------
+
+-----------------------------------------------------------------------
+----- DISENAR UN CIRCUITO COMBINACIONAL CON UNA ENTRADA DE 4 BITS -----
+----- Y UNA SALIDA DE 4 BITS CUYO VALOR CONSISTA EN EL RESULTADO  -----
+----- DE REDONDEAR LA OPERACION (3*√y) AL ENTERO MAS PROXIMO      -----
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+----- TABLA DE VALORES DE LA FUNCION                              -----
+-----------------------------------------------------------------------
+
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  y3 |  y2 |  y1 |  y0 |     |  z3 |  z2 |  z1 |  z0 |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  0  |  0  |  0  | --> |  0  |  0  |  0  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  0  |  0  |  1  | --> |  0  |  0  |  1  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  0  |  1  |  0  | --> |  0  |  1  |  0  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  0  |  1  |  1  | --> |  0  |  1  |  0  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  1  |  0  |  0  | --> |  0  |  1  |  1  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  1  |  0  |  1  | --> |  0  |  1  |  1  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  1  |  1  |  0  | --> |  0  |  1  |  1  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  0  |  1  |  1  |  1  | --> |  1  |  0  |  0  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  0  |  0  |  0  | --> |  1  |  0  |  0  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  0  |  0  |  1  | --> |  1  |  0  |  0  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  0  |  1  |  0  | --> |  1  |  0  |  0  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  0  |  1  |  1  | --> |  1  |  0  |  1  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  1  |  0  |  0  | --> |  1  |  0  |  1  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  1  |  0  |  1  | --> |  1  |  0  |  1  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  1  |  1  |  0  | --> |  1  |  0  |  1  |  1  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+--|  1  |  1  |  1  |  1  | --> |  1  |  1  |  0  |  0  |
+--+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
+
+
+----- LIBRERIAS -----
+library ieee;
+use ieee.std_logic_1164.all;
+---------------------
+
+
+----- ENTIDADES -----
+entity practica_1 is
+    port (y : in  std_logic_vector(3 downto 0);
+          z : out std_logic_vector(3 downto 0));
+end entity practica_1;
+---------------------
+
+
+----- ARQUITECTURAS -----
+
+   -- a) Obtener la expresion mas simplificada de z2 en forma de SOP utilizando una asignacion concurrente
+
+architecture concurrente_sdp of practica_1 is 
+begin 
+
+    z(2) <= (not y(3) and not y(2) and y(1)) or
+            (not y(3) and y(2) and not y(1)) or
+            (y(3) and y(2) and y(1) and y(0)) or
+            (not y(3) and y(1) and not y(0));
+
+end architecture concurrente_sdp;
+
+   --Comentarios: para obtener esta expresion hemos utilizado los mapas de kargnauth y hemos obtenido la expresion simplificada de la funcion 
+
+-------------------------
+
+   -- b) Obtener la expresion mas simplificada de z1 en forma de POS utilizando una asignacion concurrente
+
+architecture concurrente_pds of practica_1 is
+begin
+
+    z(1) <= (y(2) or y(0)) and
+            (not y(3) or y(2) or y(1)) and
+            (not y(2) or not y(1) or not y(0)) and
+            (y(3) or not y(1) or not y(0));
+
+end architecture concurrente_pds;
+
+   --Comentarios: para obtener esta expresion hemos utilizado los mapas de kargnauth y hemos obtenido la expresion simplificada de la funcion 
+
+-------------------------
+
+   -- c) Implementar z0 utilizando solo puertas NOR (y opcionalmente inversores)
+architecture estructural_nor of practica_1 is 
+begin
+
+    z(0) <= not (not (y(0) or y(2) or y(3)) or
+                 not (y(0) or y(1)) or
+                 not (not y(0) or not y(1) or not y(2)));
+
+end architecture estructural_nor;
+
+   --Comentarios: Para hacer este apartado, primero hemos simplificado la funcion obtenida a partir del mapa de kargnauth. Luego hemos creado un circuito a partir de la funcion, y este circuito lo hemos transformado en uno equivalente usando solo puertas NOR e inversores.
+
+-------------------------
+
+   -- d) Implementar z2 utilizando un decodificador 3 a 8 y puertas logicas auxiliares
+architecture estructural_deco of practica_1 is
+
+   -- A continuacion vamos a describir las senales que utilizaremos en el decodificador
+    
+
+begin
+
+    
+
+end architecture estructural_deco;
+
+-------------------------
+
+    -- e) Implementar z1 utlizando un multiplexor de 8 a 1 y puertas logicas auxiliares
+architecture estructural_mux of practica_1 is
+
+    -- A continuacion vamos 
+
+begin
+end architecture estructural_mux;
+-------------------------
+
+
+----------------------------
+
+--AND2 estructural
+
+architecture and2_estructural of practica_1 is 
+    signal y_0, y_1, z_1: std_logic;
+begin 
+    and_2: entity work.and2 port map (y_0, y_1, z_1);
+end architecture and2_estructural;
